@@ -93,9 +93,10 @@ errG = criterionMSE(fake,real_center)
 recon_image = input_cropped.clone()
 recon_image.data[:,:,opt.imageSize//4:opt.imageSize//4+opt.imageSize//2,opt.imageSize//4:opt.imageSize//4+opt.imageSize//2] = fake.data
 
-utils.save_image('val_real_samples.png',image[0])
-utils.save_image('val_cropped_samples.png',input_cropped.data[0])
-utils.save_image('val_recon_samples.png',recon_image.data[0])
+basename = os.path.basename(opt.test_image)
+utils.save_image(f'{basename}_real.png',image[0])
+utils.save_image(f'{basename}_cropped.png',input_cropped.data[0])
+utils.save_image(f'{basename}_recon.png',recon_image.data[0])
 
 print(f'{errG.data}')
 
